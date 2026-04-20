@@ -194,7 +194,8 @@ if submitted:
     ]
 
     try:
-        response = requests.post("http://localhost:5000/predict", json={"features": data_features})
+        # ⚠️ SEUL CHANGEMENT ICI : l'URL de l'API
+        response = requests.post("https://dropout-project-1.onrender.com/predict", json={"features": data_features})
         res = response.json()
         prob = res.get('probabilité', res.get('probabilite', res.get('probability', 0.0)))
         prediction = res.get('abandon', res.get('prediction', res.get('dropout', 0)))
